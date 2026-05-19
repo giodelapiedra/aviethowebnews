@@ -28,11 +28,12 @@ export const PRIMARY_NAV: NavLink[] = [
   {
     label: 'The Editorial Desk',
     href: '/editorial',
-    description: 'Where our voices come together.',
+    description: 'Sharp opinions, critical analysis, and diverse perspectives.',
     children: [
       { label: "Editor's Pick", href: '/editorial/editors-picks-editors-lens' },
       { label: 'Contributor', href: '/editorial/contributor' },
-      { label: "Editor's Lens", href: '/editorial/editors-lens' },
+      { label: 'Say What', href: '/editorial/say-what' },
+      { label: 'Gen Speaks', href: '/editorial/gen-speaks' },
     ],
   },
   { label: 'Sports', href: '/sports', description: 'On the field, on the court, on the record.' },

@@ -5,7 +5,7 @@ export type SectionSlug =
   | 'editorial';
 
 export type GovernmentCategory = 'national' | 'local' | 'elections';
-export type EditorialCategory = 'editors-pick' | 'contributor' | 'say-what';
+export type EditorialCategory = 'editors-pick' | 'contributor' | 'say-what' | 'gen-speaks';
 export type SpotlightCategory =
   | 'success'
   | 'personalities'

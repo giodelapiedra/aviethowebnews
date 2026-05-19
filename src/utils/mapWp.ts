@@ -58,6 +58,8 @@ export const SECTION_BY_CATEGORY: Record<string, SectionSlug> = {
   'editors-lens': 'editorial',
   'editors-picks-editors-lens': 'editorial',
   contributor: 'editorial',
+  'say-what': 'editorial',
+  'gen-speaks': 'editorial',
   column: 'editorial',
   'point-of-view': 'editorial',
   'episode-archive': 'editorial',

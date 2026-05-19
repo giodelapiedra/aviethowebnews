@@ -42,9 +42,9 @@ export const SECTION_META: Record<SectionSlug, SectionMeta> = {
   kaladkain: {
     slug: 'kaladkain',
     title: 'Kaladkain',
-    kicker: 'Travel · Culture · Lifestyle',
+    kicker: 'Food · Travel · Culture',
     description:
-      'A love letter to the Philippines — its coastlines, its kitchens, its heritage, and the small businesses keeping it all alive.',
+      'Melding the Filipino culture of spontaneous adventure (kaladkad) with a deep appreciation for local gastronomy (kain) — our platform for championing tourism, culinary culture, and the small enterprises that keep local heritage alive.',
     href: '/kaladkain',
     cover:
       'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2400&q=85',
@@ -53,9 +53,9 @@ export const SECTION_META: Record<SectionSlug, SectionMeta> = {
   editorial: {
     slug: 'editorial',
     title: 'The Editorial Desk',
-    kicker: 'Where our voices meet',
+    kicker: 'The intellectual core of Avietho Digital',
     description:
-      "Editor's Picks, contributor essays, and the press desk — opinion at the pace of thought.",
+      "Sharp opinions, critical analysis, and diverse perspectives on the week’s most pressing issues — Editor’s Picks, Contributor voices, Say What takes, and Gen Speaks.",
     href: '/editorial',
     cover:
       'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=2400&q=85',
@@ -85,8 +85,8 @@ export const GOVERNMENT_SUBCATEGORIES: SubCategory[] = [
 export const EDITORIAL_SUBCATEGORIES: SubCategory[] = [
   { key: 'editors-picks-editors-lens', label: "Editor's Pick", description: 'Stories our editors keep returning to.' },
   { key: 'contributor', label: 'Contributor', description: 'Voices from outside the masthead.' },
-  { key: 'press-release', label: 'Press Release', description: 'Official statements, announcements, and the record.' },
-  { key: 'editors-lens', label: "Editor's Lens", description: 'Field notes from the desk.' },
+  { key: 'say-what', label: 'Say What', description: 'Sharp takes on the week\'s most-talked-about stories.' },
+  { key: 'gen-speaks', label: 'Gen Speaks', description: 'The next generation\'s perspective on what matters.' },
 ];
 
 export const SPOTLIGHT_SUBCATEGORIES: SubCategory[] = [
