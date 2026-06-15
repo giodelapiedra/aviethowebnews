@@ -10,6 +10,7 @@ export interface WPAuthor {
   description?: string;
   link?: string;
   url?: string;
+  roles?: string[];
   avatar_urls?: Record<'24' | '48' | '96' | string, string>;
 }
 

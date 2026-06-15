@@ -68,6 +68,21 @@ export const SECTION_BY_CATEGORY: Record<string, SectionSlug> = {
   partnership: 'editorial',
 };
 
+/**
+ * Turn the WordPress user role into a display label. The public REST API does
+ * not expose roles by default — a small register_rest_field snippet in the
+ * WordPress theme makes `roles` available on the embedded author. Until then,
+ * `roles` is undefined and we fall back to "Contributor".
+ */
+export const roleLabel = (roles?: string[]): string => {
+  const slug = roles?.[0];
+  if (!slug) return 'Contributor';
+  return slug
+    .split(/[-_]/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
+
 export const decodeHtmlEntities = (input: string): string => {
   if (!input) return '';
   return input
@@ -194,7 +209,7 @@ export const mapPostToArticle = (
   const author: Author = {
     id: embedAuthor ? String(embedAuthor.id) : String(post.author),
     name: embedAuthor ? decodeHtmlEntities(embedAuthor.name) : 'Avietho Desk',
-    role: 'Contributor',
+    role: roleLabel(embedAuthor?.roles),
     avatar: embedAuthor?.avatar_urls?.['96'] ?? embedAuthor?.avatar_urls?.['48'] ?? FALLBACK_AVATAR,
     bio: embedAuthor?.description ? stripHtml(embedAuthor.description) : undefined,
   };
