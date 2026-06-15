@@ -161,36 +161,10 @@ export const ArticleDetail = () => {
         </Container>
 
         <Container size="sm" className="py-20">
-          <div className="article-body flex flex-col gap-7 font-read text-[1.15rem] md:text-[1.2rem] leading-[1.8] text-bone-100/95">
-            {article.body.length > 0 && (
-              <p className="text-pretty first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[5.5rem] first-letter:leading-[0.85] first-letter:text-gold-300">
-                {article.body[0]}
-              </p>
-            )}
-
-            {article.body.slice(1, 3).map((paragraph, index) => (
-              <p key={index} className="text-pretty">
-                {paragraph}
-              </p>
-            ))}
-
-            {article.dek && (
-              <blockquote className="my-6 border-l-2 border-gold-400 pl-8">
-                <p className="font-display text-3xl italic leading-[1.25] text-bone-50 text-balance">
-                  “{article.dek}”
-                </p>
-                <footer className="mt-4 text-[0.7rem] uppercase tracking-[0.25em] text-gold-300">
-                  — {article.author.name}, {article.author.role}
-                </footer>
-              </blockquote>
-            )}
-
-            {article.body.slice(3).map((paragraph, index) => (
-              <p key={index} className="text-pretty">
-                {paragraph}
-              </p>
-            ))}
-          </div>
+          <div
+            className="article-body font-read text-[1.15rem] md:text-[1.2rem] leading-[1.8] text-bone-100/95"
+            dangerouslySetInnerHTML={{ __html: article.bodyHtml }}
+          />
 
           <div className="hairline my-16" />
 

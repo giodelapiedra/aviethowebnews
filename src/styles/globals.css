@@ -194,6 +194,91 @@
   .arrow-link:hover svg {
     transform: translateX(0.5rem);
   }
+
+  /* Rich body rendered straight from WordPress (bold, images, lists, quotes). */
+  .article-body > * + * {
+    margin-top: 1.75rem;
+  }
+
+  .article-body p {
+    @apply text-pretty;
+  }
+
+  .article-body > p:first-of-type::first-letter {
+    @apply float-left mr-3 mt-1 font-display text-gold-300;
+    font-size: 5.5rem;
+    line-height: 0.85;
+  }
+
+  .article-body strong,
+  .article-body b {
+    @apply font-semibold text-bone-50;
+  }
+
+  .article-body em,
+  .article-body i {
+    @apply italic;
+  }
+
+  .article-body a {
+    @apply text-gold-300 underline decoration-gold-400/40 underline-offset-4 transition-colors hover:text-gold-200;
+  }
+
+  .article-body h2 {
+    @apply font-display text-3xl text-bone-50 text-balance;
+    margin-top: 3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .article-body h3 {
+    @apply font-display text-2xl text-bone-50 text-balance;
+    margin-top: 2.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .article-body ul,
+  .article-body ol {
+    @apply pl-6;
+  }
+
+  .article-body ul {
+    @apply list-disc;
+  }
+
+  .article-body ol {
+    @apply list-decimal;
+  }
+
+  .article-body li {
+    margin-top: 0.5rem;
+  }
+
+  .article-body li::marker {
+    @apply text-gold-300;
+  }
+
+  .article-body img {
+    @apply w-full h-auto;
+  }
+
+  .article-body figure {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .article-body figure img {
+    @apply shadow-editorial;
+  }
+
+  .article-body figcaption {
+    @apply mt-3 text-[0.7rem] uppercase tracking-[0.25em] text-bone-200/55;
+  }
+
+  .article-body blockquote {
+    @apply border-l-2 border-gold-400 pl-8 font-display text-2xl italic leading-[1.3] text-bone-50;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
 }
 
 @layer utilities {

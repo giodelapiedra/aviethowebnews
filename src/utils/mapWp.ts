@@ -91,6 +91,25 @@ export const stripHtml = (html: string): string => {
   return decodeHtmlEntities(clean).replace(/\s+\n/g, '\n').trim();
 };
 
+/**
+ * Keep the rich HTML that WordPress already renders (bold, italics, links,
+ * images, lists, headings, blockquotes) so the published post matches the
+ * editor exactly. We only strip script/style and inline JS for safety, since
+ * the content comes from a trusted WordPress CMS.
+ */
+export const sanitizeContentHtml = (html: string): string => {
+  if (!html) return '';
+  return html
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/\son\w+\s*=\s*"[^"]*"/gi, '')
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, '')
+    .replace(/\son\w+\s*=\s*[^\s>]+/gi, '')
+    .replace(/(href|src)\s*=\s*"javascript:[^"]*"/gi, '$1="#"')
+    .replace(/(href|src)\s*=\s*'javascript:[^']*'/gi, "$1='#'")
+    .trim();
+};
+
 export const htmlToParagraphs = (html: string): string[] => {
   if (!html) return [];
   const matches = html.match(/<p[^>]*>[\s\S]*?<\/p>/gi);
@@ -164,6 +183,8 @@ export const mapPostToArticle = (
   const dek = cleanExcerpt.length > 220 ? `${cleanExcerpt.slice(0, 217).trim()}…` : cleanExcerpt;
   const excerpt = cleanExcerpt.length > 320 ? `${cleanExcerpt.slice(0, 317).trim()}…` : cleanExcerpt;
   const body = htmlToParagraphs(post.content.rendered);
+  const sanitizedHtml = sanitizeContentHtml(post.content.rendered);
+  const bodyHtml = sanitizedHtml || body.map((p) => `<p>${p}</p>`).join('');
 
   const cover =
     embedMedia?.media_details?.sizes?.['large']?.source_url ??
@@ -185,6 +206,7 @@ export const mapPostToArticle = (
     dek: dek || title,
     excerpt: excerpt || dek || title,
     body: body.length ? body : [dek || title],
+    bodyHtml: bodyHtml || `<p>${dek || title}</p>`,
     section,
     category: categorySlug as ArticleCategory,
     categoryLabel,

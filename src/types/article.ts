@@ -35,6 +35,7 @@ export interface Article {
   dek: string;
   excerpt: string;
   body: string[];
+  bodyHtml: string;
   section: SectionSlug;
   category: ArticleCategory;
   categoryLabel: string;
